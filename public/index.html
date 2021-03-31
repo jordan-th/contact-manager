@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Contact Manager</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="/javascripts/jquery.js"></script>
+  <script src="/javascripts/handlebars.js"></script>
+  <script src="/javascripts/app.js"></script>
+</head>
+<body>
+  <main>
+    <form action="" method="">
+      <h4></h4>
+      <label>
+        Full Name:
+        <input type='text' name='full_name' required='required'>
+      </label>
+      <label>
+        Email:
+        <input type='email' name='email'>
+      </label>
+      <label>
+        Phone Number:
+        <input type="tel" name='phone_number'>
+      </label>
+      <label>
+        Tags:
+        <label>
+          <input type='checkbox' name='tag' value='family'>
+          Family
+        </label>
+        <label>
+          <input type='checkbox' name='tag' value='friend'>
+          Friend
+        </label>
+        <label>
+          <input type='checkbox' name='tag' value='work'>
+          Work
+        </label>
+      </label>
+      <fieldset class='buttons'>
+        <input type='submit' value='Save'>
+        <button type='button'>Cancel</button>
+      </fieldset>
+    </form>
+    
+    <header>Contact Manager</header>
+
+    <section id="search_params">
+      <label>
+        Search:
+        <input type='text' id='searchbar'>
+      </label>
+      
+      <p>Tags:</p>
+      <fieldset id="tag_options">
+        <label>
+          <input type='checkbox' name='tag' value='friend'>
+          Friend
+        </label> 
+        <label>
+          <input type='checkbox' name='tag' value='family'>
+          Family
+        </label> 
+        <label>
+          <input type='checkbox' name='tag' value='work'>
+          Work
+        </label> 
+      </fieldset>
+    </section>
+
+    <section>
+      <ul></ul>
+    </section>
+
+    <footer>
+      <a href="#" id="new">New Contact</a>
+    </footer>
+  </main>
+
+  <script id="contacts" type="text/x-handlebars">
+    {{#each contacts}}
+    {{> indivContact}}
+    {{/each}}
+  </script>
+
+  <script id="indivContact" type="text/x-handlebars">
+    <li data-id="{{id}}">
+      <h3>{{full_name}}</h3>
+      <p>{{email}}</p>
+      <p>{{phone_number}}</p>
+      <ul>
+      {{#each tags as |tag|}}
+      <li>{{tag}}</li>
+      {{/each}}
+      </ul>
+      <a href='#' class="edit">Edit</a>
+      <a href='#' class="delete">Delete</a>
+    </li>
+  </script>
+</body>
+</html>
