@@ -17,7 +17,6 @@ let contactManager;
       $.ajax(
         this.createConfig('/api/contacts', 'get', null)
       ).done(function (response) {
-        console.log(response)
         this.decomposeResponse(response);
         this.renderPage();
         this.addEventListeners();
@@ -47,6 +46,8 @@ let contactManager;
  
     renderPage: function () {
       $('section > ul').html(this.contactsTemplate({ contacts: this.visibleContacts }));
+      $('a.edit').on('click', $.proxy(this.editCallback, this));
+      $('a.delete').on('click', $.proxy(this.deleteCallback, this));
     },
 
     addEventListeners: function () {
@@ -122,7 +123,7 @@ let contactManager;
       })
     },
 
-    filterContacts: function () {
+    filterContacts: function () {    
       this.visibleContacts = this.allContacts.filter(contact => {
         let searchRegEx = new RegExp(this.searchStr, "gi");
         let firstName = contact.full_name.split(" ")[0];
@@ -133,11 +134,11 @@ let contactManager;
         } else if (this.searchStr !== '' && this.selectedTags.length === 0) {
           return firstName.match(searchRegEx) || lastName.match(searchRegEx);
         } else if (this.searchStr === '' && this.selectedTags.length !== 0) {
-          return tags.some(t => this.selectedTags.includes(t));
+          return contact.tags.some(t => this.selectedTags.includes(t));
         } else {
           return (
             (firstName.match(searchRegEx) || lastName.match(searchRegEx)) &&
-            tags.some(t => this.selectedTags.includes(t))
+            contact.tags.some(t => this.selectedTags.includes(t))
           );
         }
       })

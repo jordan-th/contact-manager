@@ -19,36 +19,5 @@
     "email": "ph@example.com",
     "phone_number": "54321098761",
     "tags": null
-  },
-  {
-    "full_name": "Yoo Reee",
-    "phone_number": "309492-223",
-    "email": "rrr@ddd.com",
-    "tags": "family,work",
-    "id": 6
-  },
-  {
-    "full_name": "Samwise Gamgi",
-    "phone_number": "030033",
-    "email": "you@tree.com",
-    "tags": "family",
-    "id": 8
-  },
-  {
-    "full_name": "Beluga Bill",
-    "phone_number": "30302-235",
-    "email": "bg@w.c",
-    "tags": "family",
-    "id": 9
-  },
-  {
-    "full_name": "asdf",
-    "phone_number": "9399393",
-    "email": "asdf@adsf.com",
-    "tags": [
-      "family",
-      "friend"
-    ],
-    "id": 11
   }
 ]
